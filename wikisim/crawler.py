@@ -76,7 +76,7 @@ def get_featured_articles():
 
     return featured_articles
 
-def save_featured_articles(featured_articles, data_dir='data2/featured_articles'):
+def save_featured_articles(featured_articles, data_dir='data/featured_articles'):
     """
     Saves crawled articles in text files in given directory
     in catalogues organized by categories and sub categories.
@@ -107,5 +107,4 @@ def save_featured_articles(featured_articles, data_dir='data2/featured_articles'
 
 if __name__ == '__main__':
     featured_articles = get_featured_articles()
-    print(featured_articles)
-    # save_featured_articles(featured_articles)
+    save_featured_articles(featured_articles)
