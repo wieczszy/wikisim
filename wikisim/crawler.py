@@ -54,7 +54,7 @@ def get_featured_articles():
 
     featured_articles = []
 
-    category, subcategory, article = '', '', ''
+    category, subcategory, title = '', '', ''
     for line in page_content:
         if line.startswith('==='):
             subcategory = line.replace('=', '')
@@ -66,7 +66,7 @@ def get_featured_articles():
                 title = re.search(r'\[\[(.*?)\]\]', line)
                 title = title.group(1)
                 title = title.split('|')[0]
-        if article == '':
+        if title == '':
             pass
         else:
             entry = (category, subcategory, title)
@@ -76,7 +76,7 @@ def get_featured_articles():
 
     return featured_articles
 
-def save_featured_articles(featured_articles, data_dir='data/featured_articles'):
+def save_featured_articles(featured_articles, data_dir='data2/featured_articles'):
     """
     Saves crawled articles in text files in given directory
     in catalogues organized by categories and sub categories.
@@ -107,4 +107,5 @@ def save_featured_articles(featured_articles, data_dir='data/featured_articles')
 
 if __name__ == '__main__':
     featured_articles = get_featured_articles()
-    save_featured_articles(featured_articles)
+    print(featured_articles)
+    # save_featured_articles(featured_articles)
