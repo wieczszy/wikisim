@@ -76,7 +76,7 @@ def get_featured_articles():
 
     return featured_articles
 
-def save_featured_articles(featured_articles, data_dir='data/featured_articles'):
+def save_featured_articles(featured_articles, data_dir='data/featured_articles', include_sub=True):
     """
     Saves crawled articles in text files in given directory
     in catalogues organized by categories and sub categories.
@@ -89,7 +89,7 @@ def save_featured_articles(featured_articles, data_dir='data/featured_articles')
     """
     for article in tqdm(featured_articles):
         try:
-            if article[1] != '':
+            if (article[1] != '' and include_sub):
                 category = article[0] + '_' + article[1]
             else:
                 category = article[0]
@@ -107,4 +107,4 @@ def save_featured_articles(featured_articles, data_dir='data/featured_articles')
 
 if __name__ == '__main__':
     featured_articles = get_featured_articles()
-    save_featured_articles(featured_articles)
+    save_featured_articles(featured_articles, include_sub=False)
