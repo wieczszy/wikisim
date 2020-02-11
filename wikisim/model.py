@@ -37,7 +37,7 @@ class WikiModel():
         print("--- Training time: %s seconds ---" % (time.time() - start_time))
 
     def save(self, save_dir):
-        assert model != None
+        assert self.model != None
         num_vectors = self.model.vector_size
         min_count = self.model.vocabulary.min_count
         epochs = self.model.epochs
