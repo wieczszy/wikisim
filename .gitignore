@@ -1,5 +1,8 @@
 # Project data
-data/
+data/test_data/
+data/featured_articles/
+gensim_data/
+.vscode/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
