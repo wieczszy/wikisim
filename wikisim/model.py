@@ -73,7 +73,3 @@ class WikiModel():
         sims = self.model.docvecs.most_similar([vector], topn=len(self.model.docvecs))
         ranked = sorted(sims, key=lambda s: s[1], reverse=True)
         return ranked
-
-model = WikiModel()
-model.load('data/model/doc2vec.model')
-model.save('data')
