@@ -66,7 +66,6 @@ class WikiModel():
 
     def classify(self, article_name):
         assert self.model != None
-        article_name = 'National_Air_and_Space_Intelligence_Center'
         article  = crawler.Crawler.get_page_as_text(article_name)
         article = gensim.utils.simple_preprocess(article)
         vector = self.model.infer_vector(article)
