@@ -105,7 +105,7 @@ class Crawler():
                     os.makedirs(directory)
                 file_path = os.path.join(directory, title) + '.txt'
                 if not os.path.exists(file_path):
-                    article_text = get_page_as_text(article[2])
+                    article_text = Crawler.get_page_as_text(article[2])
                     with open(file_path, 'w') as f:
                         f.write(article_text)
             except Exception:
