@@ -3,7 +3,7 @@ from gensim.models.callbacks import CallbackAny2Vec
 
 class EpochLogger(CallbackAny2Vec):
     def __init__(self):
-        self.epoch = 0
+        self.epoch = 1
 
     def on_epoch_begin(self, model):
         t = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
