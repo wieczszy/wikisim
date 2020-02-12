@@ -8,8 +8,8 @@ import gensim
 import os
 import time
 from tqdm import tqdm
-import crawler
-from epoch_logger import EpochLogger
+from wikisim import crawler
+from wikisim.epoch_logger import EpochLogger
 
 class WikiModel():
     def __init__(self):

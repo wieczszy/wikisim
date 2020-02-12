@@ -83,7 +83,7 @@ class Crawler():
         return featured_articles
 
     @staticmethod
-    def save_featured_articles(featured_articles, data_dir='data/featured_articles', include_sub=True):
+    def save_featured_articles(featured_articles, data_dir, include_sub=True):
         """
         Saves crawled articles in text files in given directory
         in catalogues organized by categories and sub categories.
@@ -92,7 +92,7 @@ class Crawler():
             featured_articles {list} -- list returned by get_featured_articles()
 
         Keyword Arguments:
-            data_dir {str} -- main directory for files to save (default: {'data/featured_articles'})
+            data_dir {str} -- main directory for files to save)
         """
         for article in tqdm(featured_articles):
             try:
@@ -111,8 +111,3 @@ class Crawler():
                         f.write(article_text)
             except Exception:
                 pass
-
-if __name__ == '__main__':
-    crawler = Crawler()
-    featured_articles = crawler.get_featured_articles()
-    crawler.save_featured_articles(featured_articles, include_sub=False)

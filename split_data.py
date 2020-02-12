@@ -12,7 +12,7 @@ PROPORTION = 0.2
 
 random.seed()
 
-root_dir = 'data/featured_articles'
+root_dir = 'wikisim/data/featured_articles'
 for root, dirs, files in os.walk(root_dir):
     for subdir in dirs:
         subdir_files = [f for f in os.listdir(os.path.join(root, subdir))]

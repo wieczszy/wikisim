@@ -3,7 +3,7 @@ Run as 'python classify path/to/model article_title'
 """
 
 import argparse
-from model import WikiModel
+from wikisim.model import WikiModel
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
