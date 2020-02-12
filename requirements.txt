@@ -2,3 +2,6 @@ gensim==3.8.1
 mwclient==0.10.0
 tqdm==4.42.1
 wordcloud==1.6.0
+Flask==1.1.1
+Flask-WTF==0.14.3
+pandas==1.0.1
