@@ -1,6 +1,6 @@
 # Project data
-data/test_data/
-data/featured_articles/
+test_data/
+featured_articles/
 gensim_data/
 .vscode/
 
