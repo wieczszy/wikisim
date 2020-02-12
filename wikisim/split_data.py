@@ -19,10 +19,12 @@ for root, dirs, files in os.walk(root_dir):
         n = len(subdir_files) - 1
         l = int(PROPORTION * n)
         idxs = [random.randint(0, n) for _ in range(l)]
+        idxs = random.sample(range(0, n), l)
         test_files = [subdir_files[idx] for idx in idxs]
-        dst = os.path.join('data', 'test_data', subdir)
-        if not os.path.exists(dst):
-            os.makedirs(dst)
+        test_dir = os.path.join('data', 'test_data', subdir)
+        if not os.path.exists(test_dir):
+            os.makedirs(test_dir)
         for file in test_files:
             src = os.path.join(root, subdir, file)
+            dst = os.path.join(test_dir, file)
             shutil.move(src, dst)
