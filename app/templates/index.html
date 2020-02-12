@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>{{ title }} - Wikisim</title>
+    </head>
+    <body>
+{% block content %}
+    <h1>Wieczorek Orlikowski</h1>
+    <form action="/index" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.inp.label }}<br>
+            {{ form.inp(size=32) }}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+{% endblock %}
+    {% if result %}
+        {{ result }}
+        {% else %}
+        {% endif %}
+
+    {% if img_src %}
+        <img src={{ img_src }}></br>
+        {% else %}
+        {% endif %}
+
+    {% if wca_src %}
+<center><p>Article wordcloud</p>
+        <img src={{ wca_src }}>
+        {% else %}
+        {% endif %}
+
+    {% if wcc_src %}
+            <p>Most similar category wordcloud</p>
+        <img src={{ wcc_src }}></center>
+        {% else %}
+        {% endif %}
+
+    </body>
+</html>
