@@ -1,3 +1,8 @@
+"""Doc2Vec model that can be trained and used to
+measure the similarity of a given Wikipedia article
+to Featured Articles divided into 30 categories.
+"""
+
 import collections
 import gensim
 import os
@@ -11,6 +16,16 @@ class WikiModel():
         self.model = None
 
     def _tag_documents(self, top_directory):
+        """For files in given directory, creates gensim
+        TaggedDocuments with the file's bottom directory
+        as tag.
+
+        Arguments:
+            top_directory {str} -- data directory
+
+        Yields:
+            gensim.models.doc2vec.TaggedDocument -- tokenized document
+        """
         for root, _, files in tqdm(os.walk(top_directory)):
             for file in filter(lambda file: file.endswith('.txt'), files):
                 document = open(os.path.join(root, file)).read()
@@ -19,10 +34,28 @@ class WikiModel():
                 yield gensim.models.doc2vec.TaggedDocument(tokens, [document_class])
 
     def _build_data(self, data_path):
+        """Prepares data to be used for training or testing.
+
+        Arguments:
+            data_path {str} -- data directory
+
+        Returns:
+            list -- list of TaggedDocuments
+        """
         data = list(self._tag_documents(data_path))
         return data
 
     def train(self, parameters, training_data_path):
+        """Trains the Doc2Vec model using given parameters
+        and training data.
+
+        Arguments:
+            parameters {dict} -- dictionary with training parameters:
+                'vector_size': {int} -- model's size
+                'min_count': {int} -- min number of word occurences
+                'epochs': {int} -- number of training epochs
+            training_data_path {str} -- training data directory
+        """
         epoch_logger = EpochLogger()
         self.model = gensim.models.doc2vec.Doc2Vec(vector_size=parameters['vector_size'],
                                                    min_count=parameters['min_count'],
@@ -37,6 +70,11 @@ class WikiModel():
         print("--- Training time: %s seconds ---" % (time.time() - start_time))
 
     def save(self, save_dir):
+        """Saves the model to files.
+
+        Arguments:
+            save_dir {str} -- directory to save model's files in
+        """
         assert self.model != None
         num_vectors = self.model.vector_size
         min_count = self.model.vocabulary.min_count
@@ -46,9 +84,19 @@ class WikiModel():
         print(f'Saved model as {os.path.join(save_dir, model_name)}')
 
     def load(self, model_path):
+        """Loads model from files.
+
+        Arguments:
+            model_path {str} -- directory with saved model
+        """
         self.model = gensim.models.doc2vec.Doc2Vec.load(model_path)
 
     def test(self, test_data_path):
+        """Test the model. Prints model's accuracy.
+
+        Arguments:
+            test_data_path {str} -- directory with testing data
+        """
         assert self.model != None
         print('=== BUILDING TESTING DATA ===')
         test_data = self._build_data(test_data_path)
@@ -65,6 +113,14 @@ class WikiModel():
         print(f"--- Testing accuracy: {acc} ---")
 
     def classify(self, article_name):
+        """Classify a Wikipedia article.
+
+        Arguments:
+            article_name {str} -- The article's title (end of the URL)
+
+        Returns:
+            list -- list of tuples (category_name:str, similarity_measure:float)
+        """
         assert self.model != None
         article  = crawler.Crawler.get_page_as_text(article_name)
         article = gensim.utils.simple_preprocess(article)
