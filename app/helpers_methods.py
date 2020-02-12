@@ -15,7 +15,7 @@ def process_article(article_name):
 
 def get_categories(article_name):
     m = WikiModel()
-    m.load("data/model/doc2vec_100_2_40.model")
+    m.load("wikisim/data/model/doc2vec_100_2_40.model")
     r = m.classify(article_name=article_name)
     return r
 
