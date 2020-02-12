@@ -42,11 +42,11 @@ Clone the repository and install required libraries:
 
 `git clone https://github.com/wieczszy/wikisim.git`
 
-`pip install -r requirements.txt`.
+`pip install -r requirements.txt`
 
 ## Usage
 You can use Wikisim in two ways:
-- in browser, by running `[TODO FLASK COMMAND]`
+- in browser, by running `export FLASK_APP=flasku.py` and `run flask`
 - using the classification script `python wikisim/classify.py wikisim/data/model/doc2vec_100_2_40.model Arthur_Sullivan
 `
 
