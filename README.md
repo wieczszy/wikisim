@@ -38,7 +38,11 @@ Warfare
 ```
 
 ## Installation
-Clone the repository and install required libraries using `pip install -r requirements.txt`.
+Clone the repository and install required libraries:
+
+`git clone https://github.com/wieczszy/wikisim.git`
+
+`pip install -r requirements.txt`.
 
 ## Usage
 You can use Wikisim in two ways:
