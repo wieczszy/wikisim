@@ -38,12 +38,17 @@ Warfare
 ```
 
 ## Installation
-Clone the repository and install required libraries using `pip install -r requirements.txt`.
+Clone the repository and install required libraries:
+
+`git clone https://github.com/wieczszy/wikisim.git`
+
+`pip install -r requirements.txt`.
 
 ## Usage
 You can use Wikisim in two ways:
 - in browser, by running `[TODO FLASK COMMAND]`
-- using the classification script `[TODO CLI CLASSIFICATION COMMAND]`
+- using the classification script `python wikisim/classify.py wikisim/data/model/doc2vec_100_2_40.model Arthur_Sullivan
+`
 
 ## Training the model
 Using `train.py` you can train the model using your own data and/or hyperparameters. Provide paths to training and testing data, where to save the trained model and hyperparameters directly in the script. Testing returns model's accuracy understood as percentage of articles classified in the correct category. 
