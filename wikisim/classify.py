@@ -1,3 +1,7 @@
+"""Scirpt to test the Wiki articles classification using CLI.
+Run as 'python classify path/to/model article_title'
+"""
+
 import argparse
 from model import WikiModel
 

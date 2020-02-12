@@ -1,19 +1,20 @@
+"""Helper script used to crawl text of Wikipedia's featured articles
+Gets titles and categories of articles mentioned on
+https://en.wikipedia.org/wiki/Wikipedia:Featured_article
+then saves the plain text versions of the articles in text files
+stored in structured catalogues.
+
+e.g Engineering and technology is a category and
+Engineering and technology_Engineering and technology biographies is
+it's subcategory. Subcategories are not stored in tree structure to
+make further processing easier.
+"""
+
 import mwclient
 import os
 import re
 import requests
 from tqdm import tqdm
-
-# Helper script used to crawl text of Wikipedia's featured articles
-# Gets titles and categories of articles mentioned on
-# https://en.wikipedia.org/wiki/Wikipedia:Featured_article
-# then saves the plain text versions of the articles in text files
-# stored in structured catalogues.
-#
-# e.g Engineering and technology is a category and
-# Engineering and technology_Engineering and technology biographies is
-# it's subcategory. Subcategories are not stored in tree structure to
-# make further processing easier.
 
 class Crawler():
     def __init__(self):
